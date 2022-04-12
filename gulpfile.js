@@ -1,6 +1,7 @@
 const { src, dest, watch, series } = require('gulp');
 const pug = require('gulp-pug');
 const postcss = require('gulp-postcss');
+const atImport = require("postcss-import");
 const autoprefixer = require('autoprefixer');
 const cssnano = require('cssnano');
 const babel = require('gulp-babel');
@@ -19,7 +20,7 @@ const pugTask = () => {
 
 const cssTask = () => {
   return src('./src/css/styles.css', { sourcemaps: true })
-    .pipe(postcss([autoprefixer(), cssnano()]))
+    .pipe(postcss([atImport(), autoprefixer(), cssnano()]))
     .pipe(dest('./public/css', { sourcemaps: '.' }));
 }
 
