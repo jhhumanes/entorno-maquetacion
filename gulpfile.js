@@ -26,6 +26,13 @@ const cssTask = () => {
     .pipe(dest('./public/css', { sourcemaps: '.' }));
 }
 
+const cssDevTask = () => {
+  return src('./src/css/styles.scss', { sourcemaps: true })
+    .pipe(sass())
+    .pipe(postcss([atImport(), autoprefixer()]))
+    .pipe(dest('./public/css', { sourcemaps: '.' }));
+}
+
 function jsTask() {
   return src('./src/js/script.js', { sourcemaps: true })
     .pipe(babel({ presets: ['@babel/preset-env'] }))
@@ -58,10 +65,10 @@ const watchTask = () =>  {
   watch(['./src/pages/*.pug', './src/partials/**/*.pug'], pugTask);
   watch(
     ['./src/css/**/*.scss', './src/js/**/*.js'],
-    series(cssTask, jsTask, browserSyncReload)
+    series(cssDevTask, jsTask, browserSyncReload)
   );
 }
 
-exports.default = series(cssTask, jsTask, pugTask, browserSyncServe, watchTask);
+exports.default = series(cssDevTask, jsTask, pugTask, browserSyncServe, watchTask);
 
 exports.build = series(cssTask, jsTask, pugTask);

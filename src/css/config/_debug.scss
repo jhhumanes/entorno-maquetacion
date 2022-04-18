@@ -1,0 +1,25 @@
+$debug: true !default;
+
+$debug-color-body: hsl(0, 50%, 50%);
+$debug-color-div: hsl(60, 50%, 50%);
+$debug-color-header: hsl(120, 50%, 50%);
+$debug-color-main: hsl(180, 50%, 50%);
+$debug-color-footer: hsl(240, 50%, 50%);
+
+@if $debug {
+  body {
+      outline: 2px dashed $debug-color-body;
+  }
+  section, article, div {
+    outline: 1px solid $debug-color-div;
+  }
+  header {
+    outline: 1px dotted $debug-color-header;
+  }
+  main {
+    outline: 1px dotted $debug-color-main;
+  }
+  footer {
+    outline: 1px dotted $debug-color-footer;
+  }
+}

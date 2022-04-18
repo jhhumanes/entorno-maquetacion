@@ -7,10 +7,11 @@ html
     title= `${pageTitle} - ${siteName}`
     meta(name="description" content=metaDescription)
     block styles
-      link(rel="stylesheet" href="/css/styles.css")
+      link(rel="stylesheet" href="./css/styles.css")
   body
-    h1 Demo Maquetación
-    p Esto es la plantilla
+    block content
+      h1 Demo Maquetación
+      p Esto es la plantilla
 
     block scripts
       script(src="/js/script.js")
