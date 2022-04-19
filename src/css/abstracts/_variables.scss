@@ -1,0 +1,45 @@
+/* Debug */
+$debug: true !default;
+$debug-color-body: hsl(0, 50%, 50%);
+$debug-color-div: hsl(60, 50%, 50%);
+$debug-color-header: hsl(120, 50%, 50%);
+$debug-color-main: hsl(180, 50%, 50%);
+$debug-color-footer: hsl(240, 50%, 50%);
+
+/* Breakpoints */
+$breakpoints: (
+  sm: 640px,
+  md: 768px,
+  lg: 1024px,
+  xl: 1280px,
+  2xl: 1536px
+);
+
+/* Dimensions - Margins */
+$margins: (
+
+) !default;
+
+/* Dimensions - Paddings */
+$paddings: (
+
+) !default;
+
+/* Stackings */
+$stackings: (
+  z-back: -1,
+  z-normal: 1,
+  z-tooltip: 10,
+  z-fixed: 100,
+  z-modal: 1000
+) !default;
+
+/* Colors */
+$colors: (
+
+) !default;
+
+/* Fonts */
+$fonts: (
+
+) !default;
