@@ -9,6 +9,9 @@ const babel = require('gulp-babel');
 const terser = require('gulp-terser');
 const browsersync = require('browser-sync').create();
 
+const stylesBaseFilename = 'main';
+const scriptsBaseFilename = 'app';
+
 const pugTask = () => {
   return src('./src/pages/*.pug')
     .pipe(
@@ -20,21 +23,23 @@ const pugTask = () => {
 }
 
 const cssTask = () => {
-  return src('./src/css/styles.scss', { sourcemaps: true })
+  return src(`./src/css/${stylesBaseFilename}.scss`, { sourcemaps: true })
     .pipe(sass())
     .pipe(postcss([atImport(), autoprefixer(), cssnano()]))
     .pipe(dest('./public/css', { sourcemaps: '.' }));
 }
 
 const cssDevTask = () => {
-  return src('./src/css/styles.scss', { sourcemaps: true })
-    .pipe(sass())
+  return src(`./src/css/${stylesBaseFilename}.scss`, { sourcemaps: true })
+    .pipe(sass({
+      outputStyle: 'expanded',
+    }))
     .pipe(postcss([atImport(), autoprefixer()]))
     .pipe(dest('./public/css', { sourcemaps: '.' }));
 }
 
 function jsTask() {
-  return src('./src/js/script.js', { sourcemaps: true })
+  return src(`./src/js/${scriptsBaseFilename}.js`, { sourcemaps: true })
     .pipe(babel({ presets: ['@babel/preset-env'] }))
     .pipe(terser())
     .pipe(dest('./public/js', { sourcemaps: '.' }));
